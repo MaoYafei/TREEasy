@@ -122,7 +122,7 @@ Here, we presented the command line for running empirical Acropora data below:
 
 # Others
     Please read below literatures for basics on dS value caculation for WGD detectation:
-      1. Mao, Y., Economo, E.P., and Satoh, N. (2018). The Roles of Introgression and Climate Change in the Rise to Dominance of Acropora Corals. Current Biology 28, 3373-3382. e3375.
+      1. Mao, Y., Economo, E.P. and Satoh, N., 2018. The Roles of Introgression and Climate Change in the Rise to Dominance of Acropora Corals. Current Biology, 28(21), pp.3373-3382.
       2. Shen, X.-X., Opulente, D.A., Kominek, J., Zhou, X., Steenwyk, J.L., Buh, K.V., Haase, M.A.B., Wisecaver, J.H., Wang, M., and Doering, D.T. (2018). Tempo and Mode of Genome Evolution in the Budding Yeast Subphylum. Cell 175, 1533-1545. e1520.
       3. Solís-Lemus, C., Bastide, P. and Ané, C., 2017. PhyloNetworks: a package for phylogenetic networks. Molecular biology and evolution, 34(12), pp.3292-3298.
 
