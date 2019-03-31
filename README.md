@@ -1,8 +1,8 @@
 # TREEasy
-Python scripts to infer species tree and phylogenetic network from multilocus data
+  This python script can be used to infer species trees and phylogenetic networks from sequences
 
 # Run the program & Parameters
-  1.  Inferring species tree and network from protein-coding sequences
+  1.  Inferring species trees and phylogenetic networks from protein-coding sequences
 
     python TREEasy.py –d DIRECTORY –s SPECIES_NAME_FILE –g GENE_NAME_FILE –b BOOTSTRAP_CUTOFF –r ROOTED_TAXON –n MAX_NUMBER_NETWORK –k CROSS_VALUE_NETWORK –t PROCESSOR_NUMBER –c DATA_TYPE
 
@@ -20,13 +20,13 @@ Python scripts to infer species tree and phylogenetic network from multilocus da
         Aten
         Asub, Agem
 
--n: An integer. This parameter is the maximum number of hybridization in your hypothesis. This value has a big impact on running time. We suggest that this value should be less than 5.
+-n: An integer. This parameter is the maximum number of hybridizations that can be inferred. This value has a big impact on running time. We suggest that this value should be less than 5.
 
--k: An integer. This value is a cross-validation value for PhyloNet running. This value has to be an integral multiple of the number of gene trees, which are used to infer phylogenetic network.
+-k: An integer. This value is a cross-validation value for PhyloNet. This value has to be a multiple of the number of gene trees which are used to infer the phylogenetic network.
 
--t: An integer. This parameter is processor number. We do not suggest using all processors in your device to run this program. 
+-t: An integer. This parameter is the number of processors to be used. We do not suggest using all processors in your device to run this program.  
 
--c: Data type. This parameter describes the data type of input. There are two data types for the TREEasy. The first type is protein-coding sequences (CDS). You have to prepare two FASTA files for one gene. The one is protein amino acid sequences in FASTA file named as XXX_aa.fasta (eg. CO1_aa.fasta), the other is corresponding nuclear sequences in FASTA file named as XXX_nc.fasta (eg. CO1_nc.fasta). The second type is non-cds. Only one FASTA file is required as input named as XXX.fasta (eg. CO1.fasta). 
+-c: Data type. Data type. This parameter describes the input data type. There are two possible data types for the TREEasy. The first type is protein-coding sequences (CDS). You have to prepare two FASTA files for one gene. The first is the protein amino acid sequences in FASTA file named as XXX_aa.fasta (eg. CO1_aa.fasta), the other is corresponding nucleotide sequences in FASTA file named as XXX_nc.fasta (eg. CO1_nc.fasta). The second type is non-cds. Only one FASTA file is required as input named as XXX.fasta (eg. CO1.fasta). 
 
 Here, we presented the command line for running empirical Acropora data below:
 
@@ -55,7 +55,7 @@ Here, we presented the command line for running empirical Acropora data below:
 
 
   1-2. For Non-CDS data type (-c noncds):
-   	Nuclear_sequence_files in a directory, and each FASTA file contains nuclear sequences of all taxa (No missing data allowed). Moreover, each of FASTA file must be named as *.fasta.
+   	Nuclear_sequence_files in a directory, and each FASTA file contains molecular sequences of all taxa (No missing data allowed). Moreover, each of FASTA file must be named as *.fasta.
 
     eg: CO1.fasta
         >Taxon1
