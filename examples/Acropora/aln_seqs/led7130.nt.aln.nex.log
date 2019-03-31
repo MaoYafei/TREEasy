@@ -1,0 +1,147 @@
+IQ-TREE multicore version 1.6.8 for Linux 64-bit built Oct 28 2018
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    sango10206.oist.jp (AVX2, FMA3, 125 GB RAM)
+Command: iqtree -s examples/Acropora//aln_seqs/led7130.nt.aln -bb 1000 -redo -nt 3 -spp examples/Acropora//aln_seqs/led7130.nt.aln.nex -m MFPMERGE
+Seed:    801415 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Sat Jan 12 16:15:49 2019
+Kernel:  AVX+FMA - 3 threads (24 CPU cores detected)
+
+Reading partition model file examples/Acropora//aln_seqs/led7130.nt.aln.nex ...
+Reading alignment file examples/Acropora//aln_seqs/led7130.nt.aln ... Fasta format detected
+Alignment most likely contains DNA/RNA sequences
+Alignment has 5 sequences with 1608 columns, 70 distinct patterns
+16 parsimony-informative, 111 singleton sites, 1481 constant sites
+                          Gap/Ambiguity  Composition  p-value
+   1  Adif_sc0000142.g216.t1      0.19%    passed     97.14%
+   2  Aech_sc0000025.g16210.t1    0.56%    passed     99.64%
+   3  Agem_sc0000097.g25215.t1    0.56%    passed     99.79%
+   4  Asub_sc0000122.g18115.t1    0.56%    passed     99.99%
+   5  Aten_sc0000187.g178.t1      0.37%    passed     95.59%
+****  TOTAL                       0.45%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: No CharPartition defined, use all CharSets
+
+Loading 3 partitions...
+Subset	Type	Seqs	Sites	Infor	Invar	Model	Name
+1		5	536	2	502	MFPMERGE	p1
+2		5	536	2	511	MFPMERGE	p2
+3		5	536	12	468	MFPMERGE	p3
+Degree of missing data: 0.000
+Info: multi-threading strategy over partitions
+
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.000 seconds
+NOTE: ModelFinder requires 0 MB RAM!
+Testing GTR+F+G on supermatrix...
+WARNING: Number of threads seems too high for short alignments. Use -nt AUTO to determine best number of threads.
+GTR+F+G4 / LnL: -3016.533 / df: 16 / AIC: 6065.065 / AICc: 6065.407 / BIC: 6151.189
+Selecting individual models for 3 charsets using BIC...
+ No. Model        Score       Charset
+   1 HKY+F        1823.192    p2
+   2 HKY+F        1928.235    p1
+   3 TNe          2334.140    p3
+Full partition model BIC score: 6144.146 (LnL: -3001.937  df:19)
+Merging models to increase model fit (about 7 total partition schemes)...
+   4 HKY+F        6122.251    p1+p2
+   5 HKY+F        6142.949    p2+p3
+   6 TN+F         6139.888    p1+p3
+Merging p1+p2 with BIC score: 6122.251 (LnL: -3009.446  df: 14)
+   7 HKY+F        6127.941    p1+p2+p3
+BEST-FIT PARTITION MODEL: 
+  charpartition BIC = HKY+F: p1 p2, TNe: p3;
+Agglomerative model selection: ((p1,p2)1:6122.25,p3)
+Merging into 2 partitions...
+Partition information was printed to examples/Acropora//aln_seqs/led7130.nt.aln.nex.best_scheme.nex
+Partition information in Raxml format was printed to examples/Acropora//aln_seqs/led7130.nt.aln.nex.best_scheme
+
+All model information printed to examples/Acropora//aln_seqs/led7130.nt.aln.nex.model.gz
+CPU time for ModelFinder: 0.671 seconds (0h:0m:0s)
+Wall-clock time for ModelFinder: 22.447 seconds (0h:0m:22s)
+Generating 1000 samples for ultrafast bootstrap (seed: 801415)...
+
+NOTE: 0 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -3042.409
+Current log-likelihood at step 1: -3015.705
+Current log-likelihood at step 2: -3013.708
+Current log-likelihood at step 3: -3009.429
+Current log-likelihood at step 4: -3009.429
+Partition-specific rates:  0.684 1.633
+Parameters optimization took 3 rounds (1.805 sec)
+
+Computing ML distances based on estimated model parameters... 0.003 sec
+Computing BIONJ tree...
+0.095 seconds
+Log-likelihood of BIONJ tree: -3009.429
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 99 parsimony trees... 1.600 second
+Computing log-likelihood of 4 initial trees ... 0.569 seconds
+Current best score: -3009.429
+
+Do NNI search on 5 best initial trees
+Finish initializing candidate tree set (5)
+Current best tree score: -3009.429 / CPU time: 5.804
+Number of iterations: 5
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Iteration 10 / LogL: -3022.986 / Time: 0h:0m:14s
+Iteration 20 / LogL: -3009.429 / Time: 0h:0m:29s
+Iteration 30 / LogL: -3009.429 / Time: 0h:0m:42s (0h:1m:42s left)
+Iteration 40 / LogL: -3009.429 / Time: 0h:0m:53s (0h:1m:22s left)
+Iteration 50 / LogL: -3009.429 / Time: 0h:1m:5s (0h:1m:7s left)
+Log-likelihood cutoff on original alignment: -3056.349
+Iteration 60 / LogL: -3009.429 / Time: 0h:1m:24s (0h:0m:57s left)
+Iteration 70 / LogL: -3022.986 / Time: 0h:1m:37s (0h:0m:42s left)
+Iteration 80 / LogL: -3009.429 / Time: 0h:1m:50s (0h:0m:27s left)
+Iteration 90 / LogL: -3009.429 / Time: 0h:2m:1s (0h:0m:13s left)
+Iteration 100 / LogL: -3009.429 / Time: 0h:2m:16s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -3056.349
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 1.000
+TREE SEARCH COMPLETED AFTER 101 ITERATIONS / Time: 0h:2m:19s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+Initial log-likelihood: -3009.429
+Current log-likelihood at step 1: -3009.429
+Partition-specific rates:  0.684 1.633
+Parameters optimization took 0 rounds (0.194 sec)
+
+BEST SCORE FOUND : -3009.429
+Creating bootstrap support values...
+Split supports printed to NEXUS file examples/Acropora//aln_seqs/led7130.nt.aln.nex.splits.nex
+Total tree length: 0.086
+
+Total number of iterations: 101
+CPU time used for tree search: 4.519 sec (0h:0m:4s)
+Wall-clock time used for tree search: 136.563 sec (0h:2m:16s)
+Total CPU time used: 4.677 sec (0h:0m:4s)
+Total wall-clock time used: 140.925 sec (0h:2m:20s)
+
+Computing bootstrap consensus tree...
+Reading input file examples/Acropora//aln_seqs/led7130.nt.aln.nex.splits.nex...
+5 taxa and 13 splits.
+Consensus tree written to examples/Acropora//aln_seqs/led7130.nt.aln.nex.contree
+Reading input trees file examples/Acropora//aln_seqs/led7130.nt.aln.nex.contree
+Log-likelihood of consensus tree: -3009.429
+
+Analysis results written to: 
+  IQ-TREE report:                examples/Acropora//aln_seqs/led7130.nt.aln.nex.iqtree
+  Maximum-likelihood tree:       examples/Acropora//aln_seqs/led7130.nt.aln.nex.treefile
+  Likelihood distances:          examples/Acropora//aln_seqs/led7130.nt.aln.nex.mldist
+  Best partitioning scheme:      examples/Acropora//aln_seqs/led7130.nt.aln.nex.best_scheme.nex
+           in RAxML format:      examples/Acropora//aln_seqs/led7130.nt.aln.nex.best_scheme
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          examples/Acropora//aln_seqs/led7130.nt.aln.nex.splits.nex
+  Consensus tree:                examples/Acropora//aln_seqs/led7130.nt.aln.nex.contree
+  Screen log file:               examples/Acropora//aln_seqs/led7130.nt.aln.nex.log
+
+Date and Time: Sat Jan 12 16:18:35 2019

@@ -1,0 +1,190 @@
+IQ-TREE multicore version 1.6.8 for Linux 64-bit built Oct 28 2018
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    sango10411.oist.jp (AVX2, FMA3, 125 GB RAM)
+Command: iqtree -s Yeast_2408_clade1//aln_seqs/OG2681.nt.aln -bb 1000 -redo -nt 3 -spp Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex -m MFPMERGE
+Seed:    676795 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Mar  7 05:25:04 2019
+Kernel:  AVX+FMA - 3 threads (24 CPU cores detected)
+
+Reading partition model file Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex ...
+Reading alignment file Yeast_2408_clade1//aln_seqs/OG2681.nt.aln ... Fasta format detected
+Alignment most likely contains DNA/RNA sequences
+Alignment has 15 sequences with 1362 columns, 836 distinct patterns
+782 parsimony-informative, 173 singleton sites, 407 constant sites
+                                    Gap/Ambiguity  Composition  p-value
+   1  Candida_glabrata                      0.00%    passed      7.85%
+   2  Nakaseomyces_bacillisporus            0.44%    failed      0.00%
+   3  Nakaseomyces_bracarensis              0.00%    failed      4.60%
+   4  Nakaseomyces_castellii                0.00%    passed     38.35%
+   5  Nakaseomyces_delphensis               0.00%    failed      0.00%
+   6  Nakaseomyces_nivariensis              0.00%    passed     75.83%
+   7  Saccharomyces_arboricola              0.00%    passed     50.65%
+   8  Saccharomyces_cerevisiae              0.00%    passed     94.37%
+   9  Saccharomyces_eubayanus               0.00%    failed      0.34%
+  10  Saccharomyces_kudriavzevii            0.00%    passed     22.37%
+  11  Saccharomyces_mikatae                 0.00%    passed     81.72%
+  12  Saccharomyces_paradoxus               0.00%    passed     96.43%
+  13  Saccharomyces_uvarum                  0.00%    failed      2.29%
+  14  Tetrapisispora_blattae                0.88%    failed      0.00%
+  15  yHMPu5000035629_Yueomyces_sinensis    2.86%    failed      0.00%
+****  TOTAL                                 0.28%  7 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: No CharPartition defined, use all CharSets
+
+Loading 3 partitions...
+Subset	Type	Seqs	Sites	Infor	Invar	Model	Name
+1		15	454	216	163	MFPMERGE	p1
+2		15	454	127	237	MFPMERGE	p2
+3		15	454	439	7	MFPMERGE	p3
+Degree of missing data: 0.000
+Info: multi-threading strategy over partitions
+
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.002 seconds
+NOTE: ModelFinder requires 7 MB RAM!
+Testing GTR+F+G on supermatrix...
+GTR+F+G4 / LnL: -13282.623 / df: 36 / AIC: 26637.246 / AICc: 26639.257 / BIC: 26825.048
+Selecting individual models for 3 charsets using BIC...
+ No. Model        Score       Charset
+   1 TIM3+F+G4    4829.683    p2
+   2 GTR+F+I      6961.007    p1
+   3 HKY+F+I+G4   13611.909   p3
+Full partition model BIC score: 25617.699 (LnL: -12624.824  df:51)
+Merging models to increase model fit (about 7 total partition schemes)...
+   4 TIM3+F+I+G4  25690.914   p1+p2
+   5 TIM3+F+I+G4  26316.134   p1+p3
+   6 TPM3u+F+I+G4 26568.610   p2+p3
+BEST-FIT PARTITION MODEL: 
+  charpartition BIC = GTR+F+I: p1, TIM3+F+G4: p2, HKY+F+I+G4: p3;
+Agglomerative model selection: (p1,p2,p3)
+Partition information was printed to Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.best_scheme.nex
+Partition information in Raxml format was printed to Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.best_scheme
+
+All model information printed to Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.model.gz
+CPU time for ModelFinder: 24.250 seconds (0h:0m:24s)
+Wall-clock time for ModelFinder: 1463.236 seconds (0h:24m:23s)
+Generating 1000 samples for ultrafast bootstrap (seed: 676795)...
+
+NOTE: 4 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -14004.869
+Current log-likelihood at step 1: -12893.785
+Current log-likelihood at step 2: -12641.088
+Current log-likelihood at step 3: -12619.093
+Current log-likelihood at step 4: -12614.325
+Current log-likelihood at step 5: -12612.998
+Current log-likelihood at step 6: -12612.275
+Current log-likelihood at step 7: -12611.758
+Current log-likelihood at step 8: -12611.369
+Current log-likelihood at step 9: -12611.066
+Current log-likelihood at step 10: -12610.839
+Current log-likelihood at step 11: -12610.658
+Current log-likelihood at step 12: -12610.510
+Current log-likelihood at step 13: -12610.389
+Current log-likelihood at step 14: -12610.291
+Partition-specific rates:  0.236 0.119 2.645
+Parameters optimization took 13 rounds (22.713 sec)
+
+Computing ML distances based on estimated model parameters... 0.006 sec
+Computing BIONJ tree...
+0.237 seconds
+Log-likelihood of BIONJ tree: -12610.284
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 99 parsimony trees... 16.735 second
+Computing log-likelihood of 98 initial trees ... 602.425 seconds
+Current best score: -12610.284
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -12607.884
+Current log-likelihood at step 1: -12607.689
+Current log-likelihood at step 2: -12607.610
+Parameters optimization took 1 rounds (4.397 sec)
+
+BETTER TREE FOUND at iteration 1: -12607.610
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -12600.603
+Current log-likelihood at step 1: -12600.319
+Current log-likelihood at step 2: -12600.210
+Current log-likelihood at step 3: -12600.125
+Parameters optimization took 2 rounds (4.122 sec)
+
+BETTER TREE FOUND at iteration 2: -12600.125
+Iteration 10 / LogL: -12600.281 / Time: 0h:19m:29s
+Iteration 20 / LogL: -12607.678 / Time: 0h:23m:16s
+Finish initializing candidate tree set (4)
+Current best tree score: -12600.125 / CPU time: 1368.515
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Iteration 30 / LogL: -12608.076 / Time: 0h:26m:38s (1h:6m:9s left)
+Iteration 40 / LogL: -12642.594 / Time: 0h:30m:54s (0h:49m:7s left)
+Iteration 50 / LogL: -12600.259 / Time: 0h:36m:28s (0h:38m:42s left)
+Log-likelihood cutoff on original alignment: -12634.101
+Iteration 60 / LogL: -12642.761 / Time: 0h:38m:20s (0h:27m:17s left)
+Iteration 70 / LogL: -12607.606 / Time: 0h:40m:47s (0h:18m:54s left)
+Iteration 80 / LogL: -12600.565 / Time: 0h:43m:23s (0h:12m:5s left)
+Iteration 90 / LogL: -12600.270 / Time: 0h:44m:34s (0h:6m:0s left)
+UPDATE BEST LOG-LIKELIHOOD: -12600.124
+Iteration 100 / LogL: -12632.133 / Time: 0h:46m:11s (0h:0m:55s left)
+Log-likelihood cutoff on original alignment: -12634.225
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 1.000
+TREE SEARCH COMPLETED AFTER 103 ITERATIONS / Time: 0h:46m:45s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+Initial log-likelihood: -12600.122
+Current log-likelihood at step 1: -12600.052
+Current log-likelihood at step 2: -12599.993
+Current log-likelihood at step 3: -12599.944
+Current log-likelihood at step 4: -12599.903
+Current log-likelihood at step 5: -12599.869
+Current log-likelihood at step 6: -12599.841
+Current log-likelihood at step 7: -12599.817
+Current log-likelihood at step 8: -12599.798
+Current log-likelihood at step 9: -12599.782
+Current log-likelihood at step 10: -12599.769
+Current log-likelihood at step 11: -12599.758
+Current log-likelihood at step 12: -12599.748
+Partition-specific rates:  0.211 0.106 2.683
+Parameters optimization took 11 rounds (14.711 sec)
+
+BEST SCORE FOUND : -12599.748
+Creating bootstrap support values...
+Split supports printed to NEXUS file Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.splits.nex
+Total tree length: 11.996
+
+Total number of iterations: 103
+CPU time used for tree search: 75.983 sec (0h:1m:15s)
+Wall-clock time used for tree search: 2776.254 sec (0h:46m:16s)
+Total CPU time used: 77.721 sec (0h:1m:17s)
+Total wall-clock time used: 2821.962 sec (0h:47m:1s)
+
+Computing bootstrap consensus tree...
+Reading input file Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.splits.nex...
+15 taxa and 56 splits.
+Consensus tree written to Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.contree
+Reading input trees file Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.contree
+Log-likelihood of consensus tree: -12599.748
+
+Analysis results written to: 
+  IQ-TREE report:                Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.iqtree
+  Maximum-likelihood tree:       Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.treefile
+  Likelihood distances:          Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.mldist
+  Best partitioning scheme:      Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.best_scheme.nex
+           in RAxML format:      Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.best_scheme
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.splits.nex
+  Consensus tree:                Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.contree
+  Screen log file:               Yeast_2408_clade1//aln_seqs/OG2681.nt.aln.nex.log
+
+Date and Time: Thu Mar  7 06:36:33 2019

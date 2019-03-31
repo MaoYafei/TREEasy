@@ -4,7 +4,7 @@ Python scripts to infer species tree and phylogenetic network from multilocus da
 # Run the program & Parameters
   1.  Inferring species tree and network from protein-coding sequences
 
-    python TREEasy.py –d DIRECTORY –s SPECIES_NAME_FILE –g GENE_NAME_FILE –b BOOTSTRAP_CUTOFF –r ROOTED_TAXON –n MAX_NUMBER_NETWORK –k CROSS_VALUE_NETWORK –t PROCESSOR_NUMBER –c DATA_TYPE
+    python TREEASY.py –d DIRECTORY –s SPECIES_NAME_FILE –g GENE_NAME_FILE –b BOOTSTRAP_CUTOFF –r ROOTED_TAXON –n MAX_NUMBER_NETWORK –k CROSS_VALUE_NETWORK –t PROCESSOR_NUMBER –c DATA_TYPE
 
 -d: A directory path. This directory contains the required input files.
 
@@ -14,7 +14,7 @@ Python scripts to infer species tree and phylogenetic network from multilocus da
 
 -b: A value from 0 to 100. This parameter is a cutoff value for bootstrap values in gene trees. If bootstrap values of all nodes in a gene tree are greater than the cutoff value, the gene tree will be used to infer species tree and networks.
 
--r: (a) species name(s). The TREEasy regards this taxon as root. If you have multi-outgroups, use “,” to separate species names.
+-r: (a) species name(s). The TREEASY regards this taxon as root. If you have multi-outgroups, use “,” to separate species names.
 
     eg:
         Aten
@@ -30,7 +30,7 @@ Python scripts to infer species tree and phylogenetic network from multilocus da
 
 Here, we presented the command line for running empirical Acropora data below:
 
-     python TREEasy.py -d examples/Acropora -s examples/Acro_spe_name.txt -g examples/Acro_gene_name.txt -b 50 -r Aten -n 3 -k 3 -t 8 -c CDS
+     python TREEASY.py -d examples/Acropora -s examples/Acro_spe_name.txt -g examples/Acro_gene_name.txt -b 50 -r Aten -n 3 -k 3 -t 8 -c CDS
 
 
 # Input

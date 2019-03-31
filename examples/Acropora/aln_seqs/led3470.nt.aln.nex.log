@@ -1,0 +1,288 @@
+IQ-TREE multicore version 1.6.8 for Linux 64-bit built Oct 28 2018
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    sango10206.oist.jp (AVX2, FMA3, 125 GB RAM)
+Command: iqtree -s examples/Acropora//aln_seqs/led3470.nt.aln -bb 1000 -redo -nt 3 -spp examples/Acropora//aln_seqs/led3470.nt.aln.nex -m MFPMERGE
+Seed:    521993 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Sat Jan 12 16:03:28 2019
+Kernel:  AVX+FMA - 3 threads (24 CPU cores detected)
+
+Reading partition model file examples/Acropora//aln_seqs/led3470.nt.aln.nex ...
+Reading alignment file examples/Acropora//aln_seqs/led3470.nt.aln ... Fasta format detected
+Alignment most likely contains DNA/RNA sequences
+Alignment has 5 sequences with 729 columns, 53 distinct patterns
+0 parsimony-informative, 149 singleton sites, 580 constant sites
+                          Gap/Ambiguity  Composition  p-value
+   1  Adif_sc0000005.g601.t1     68.31%    passed     20.07%
+   2  Aech_sc0000135.g25757.t1   32.51%    passed     87.72%
+   3  Agem_sc0000390.g22430.t1   68.31%    passed     29.86%
+   4  Asub_sc0000010.g9969.t1     2.06%    passed     88.24%
+   5  Aten_sc0000104.g360.t1     11.11%    passed     73.63%
+WARNING: 2 sequences contain more than 50% gaps/ambiguity
+****  TOTAL                      36.46%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: No CharPartition defined, use all CharSets
+
+Loading 3 partitions...
+Subset	Type	Seqs	Sites	Infor	Invar	Model	Name
+1		5	243	0	194	MFPMERGE	p1
+WARNING: No parsimony-informative sites in partition p1
+2		5	243	0	207	MFPMERGE	p2
+WARNING: No parsimony-informative sites in partition p2
+3		5	243	0	179	MFPMERGE	p3
+WARNING: No parsimony-informative sites in partition p3
+Degree of missing data: 0.000
+Info: multi-threading strategy over partitions
+
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.010 seconds
+NOTE: ModelFinder requires 0 MB RAM!
+Testing GTR+F+G on supermatrix...
+WARNING: Number of threads seems too high for short alignments. Use -nt AUTO to determine best number of threads.
+GTR+F+G4 / LnL: -1603.123 / df: 16 / AIC: 3238.247 / AICc: 3239.011 / BIC: 3311.713
+Selecting individual models for 3 charsets using BIC...
+ No. Model        Score       Charset
+   1 F81+F        1075.020    p1
+   2 HKY+F        1188.406    p3
+   3 F81+F        985.718     p2
+Full partition model BIC score: 3302.976 (LnL: -1588.867  df:19)
+Merging models to increase model fit (about 7 total partition schemes)...
+   4 F81+F        3294.463    p1+p2
+   5 F81+F        3287.691    p1+p3
+   6 F81+F        3294.717    p2+p3
+Merging p1+p3 with BIC score: 3287.691 (LnL: -1597.704  df: 14)
+   7 F81+F        3281.298    p1+p2+p3
+Merging p1+p2+p3 with BIC score: 3281.298 (LnL: -1607.690  df: 10)
+BEST-FIT PARTITION MODEL: 
+  charpartition BIC = F81+F: p1 p2 p3;
+Agglomerative model selection: ((p1,p3)1:3287.69,p2)2:3281.3
+Merging into 1 partitions...
+Partition information was printed to examples/Acropora//aln_seqs/led3470.nt.aln.nex.best_scheme.nex
+Partition information in Raxml format was printed to examples/Acropora//aln_seqs/led3470.nt.aln.nex.best_scheme
+
+All model information printed to examples/Acropora//aln_seqs/led3470.nt.aln.nex.model.gz
+CPU time for ModelFinder: 1.030 seconds (0h:0m:1s)
+Wall-clock time for ModelFinder: 27.806 seconds (0h:0m:27s)
+Generating 1000 samples for ultrafast bootstrap (seed: 521993)...
+
+NOTE: 0 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+Initial log-likelihood: -1607.690
+Current log-likelihood at step 1: -1607.690
+Partition-specific rates:  1.000
+Parameters optimization took 0 rounds (0.026 sec)
+
+Computing ML distances based on estimated model parameters... 0.000 sec
+Computing BIONJ tree...
+0.006 seconds
+Log-likelihood of BIONJ tree: -1607.690
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 0.970 second
+Computing log-likelihood of 13 initial trees ... 1.640 seconds
+Current best score: -1607.690
+
+Do NNI search on 15 best initial trees
+UPDATE BEST LOG-LIKELIHOOD: -1607.690
+WARNING: NNI search needs unusual large number of steps (5) to converge!
+WARNING: NNI search needs unusual large number of steps (5) to converge!
+WARNING: NNI search needs unusual large number of steps (5) to converge!
+Iteration 10 / LogL: -1607.701 / Time: 0h:0m:8s
+Finish initializing candidate tree set (15)
+Current best tree score: -1607.690 / CPU time: 11.908
+Number of iterations: 15
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+UPDATE BEST LOG-LIKELIHOOD: -1607.690
+Iteration 20 / LogL: -1607.690 / Time: 0h:0m:14s
+UPDATE BEST LOG-LIKELIHOOD: -1607.690
+UPDATE BEST LOG-LIKELIHOOD: -1607.690
+Iteration 30 / LogL: -1607.690 / Time: 0h:0m:19s (0h:0m:47s left)
+UPDATE BEST LOG-LIKELIHOOD: -1607.690
+UPDATE BEST LOG-LIKELIHOOD: -1607.690
+Iteration 40 / LogL: -1607.690 / Time: 0h:0m:25s (0h:0m:38s left)
+UPDATE BEST LOG-LIKELIHOOD: -1607.690
+Iteration 50 / LogL: -1607.690 / Time: 0h:0m:30s (0h:0m:31s left)
+Log-likelihood cutoff on original alignment: -1611.858
+Iteration 60 / LogL: -1607.690 / Time: 0h:0m:37s (0h:0m:25s left)
+Iteration 70 / LogL: -1607.690 / Time: 0h:0m:43s (0h:0m:18s left)
+Iteration 80 / LogL: -1607.690 / Time: 0h:0m:48s (0h:0m:12s left)
+Iteration 90 / LogL: -1607.690 / Time: 0h:0m:55s (0h:0m:6s left)
+Iteration 100 / LogL: -1607.690 / Time: 0h:1m:3s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -1611.858
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.727
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+Iteration 110 / LogL: -1607.690 / Time: 0h:1m:11s (0h:0m:58s left)
+Iteration 120 / LogL: -1607.690 / Time: 0h:1m:18s (0h:0m:52s left)
+Iteration 130 / LogL: -1607.690 / Time: 0h:1m:26s (0h:0m:46s left)
+Iteration 140 / LogL: -1607.690 / Time: 0h:1m:32s (0h:0m:40s left)
+Iteration 150 / LogL: -1607.690 / Time: 0h:1m:39s (0h:0m:33s left)
+Log-likelihood cutoff on original alignment: -1611.858
+Iteration 160 / LogL: -1607.690 / Time: 0h:1m:48s (0h:0m:27s left)
+Iteration 170 / LogL: -1607.690 / Time: 0h:1m:54s (0h:0m:20s left)
+Iteration 180 / LogL: -1607.690 / Time: 0h:2m:1s (0h:0m:13s left)
+Iteration 190 / LogL: -1607.690 / Time: 0h:2m:8s (0h:0m:6s left)
+UPDATE BEST LOG-LIKELIHOOD: -1607.690
+Iteration 200 / LogL: -1607.690 / Time: 0h:2m:17s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -1611.858
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.564
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+Iteration 210 / LogL: -1607.690 / Time: 0h:2m:25s (0h:1m:2s left)
+Iteration 220 / LogL: -1607.690 / Time: 0h:2m:32s (0h:0m:55s left)
+Iteration 230 / LogL: -1607.690 / Time: 0h:2m:38s (0h:0m:48s left)
+Iteration 240 / LogL: -1607.690 / Time: 0h:2m:45s (0h:0m:41s left)
+Iteration 250 / LogL: -1607.690 / Time: 0h:2m:52s (0h:0m:34s left)
+Log-likelihood cutoff on original alignment: -1611.858
+Iteration 260 / LogL: -1607.690 / Time: 0h:3m:0s (0h:0m:27s left)
+Iteration 270 / LogL: -1607.690 / Time: 0h:3m:7s (0h:0m:20s left)
+Iteration 280 / LogL: -1607.690 / Time: 0h:3m:12s (0h:0m:13s left)
+Iteration 290 / LogL: -1607.690 / Time: 0h:3m:19s (0h:0m:6s left)
+Iteration 300 / LogL: -1607.690 / Time: 0h:3m:25s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -1611.858
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.750
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+Iteration 310 / LogL: -1607.690 / Time: 0h:3m:31s (0h:1m:1s left)
+Iteration 320 / LogL: -1607.690 / Time: 0h:3m:37s (0h:0m:54s left)
+Iteration 330 / LogL: -1607.690 / Time: 0h:3m:44s (0h:0m:47s left)
+Iteration 340 / LogL: -1607.690 / Time: 0h:3m:50s (0h:0m:40s left)
+Iteration 350 / LogL: -1607.690 / Time: 0h:3m:55s (0h:0m:33s left)
+Log-likelihood cutoff on original alignment: -1611.858
+Iteration 360 / LogL: -1607.690 / Time: 0h:4m:2s (0h:0m:27s left)
+Iteration 370 / LogL: -1607.690 / Time: 0h:4m:8s (0h:0m:20s left)
+Iteration 380 / LogL: -1607.690 / Time: 0h:4m:15s (0h:0m:13s left)
+Iteration 390 / LogL: -1607.690 / Time: 0h:4m:20s (0h:0m:6s left)
+Iteration 400 / LogL: -1607.690 / Time: 0h:4m:26s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -1611.858
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.711
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+Iteration 410 / LogL: -1607.690 / Time: 0h:4m:32s (0h:1m:0s left)
+Iteration 420 / LogL: -1607.690 / Time: 0h:4m:38s (0h:0m:53s left)
+Iteration 430 / LogL: -1607.690 / Time: 0h:4m:43s (0h:0m:46s left)
+Iteration 440 / LogL: -1607.690 / Time: 0h:4m:49s (0h:0m:39s left)
+Iteration 450 / LogL: -1607.690 / Time: 0h:4m:54s (0h:0m:32s left)
+Log-likelihood cutoff on original alignment: -1611.858
+Iteration 460 / LogL: -1607.690 / Time: 0h:4m:59s (0h:0m:26s left)
+Iteration 470 / LogL: -1607.690 / Time: 0h:5m:5s (0h:0m:19s left)
+Iteration 480 / LogL: -1607.690 / Time: 0h:5m:11s (0h:0m:13s left)
+Iteration 490 / LogL: -1607.690 / Time: 0h:5m:17s (0h:0m:6s left)
+Iteration 500 / LogL: -1607.690 / Time: 0h:5m:23s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -1611.858
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.505
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+Iteration 510 / LogL: -1607.690 / Time: 0h:5m:30s (0h:0m:58s left)
+Iteration 520 / LogL: -1607.690 / Time: 0h:5m:37s (0h:0m:52s left)
+Iteration 530 / LogL: -1607.690 / Time: 0h:5m:44s (0h:0m:45s left)
+Iteration 540 / LogL: -1607.690 / Time: 0h:5m:51s (0h:0m:39s left)
+Iteration 550 / LogL: -1607.690 / Time: 0h:5m:58s (0h:0m:32s left)
+Log-likelihood cutoff on original alignment: -1611.858
+Iteration 560 / LogL: -1607.690 / Time: 0h:6m:7s (0h:0m:26s left)
+Iteration 570 / LogL: -1607.690 / Time: 0h:6m:14s (0h:0m:19s left)
+Iteration 580 / LogL: -1607.690 / Time: 0h:6m:21s (0h:0m:13s left)
+Iteration 590 / LogL: -1607.690 / Time: 0h:6m:27s (0h:0m:6s left)
+Iteration 600 / LogL: -1607.690 / Time: 0h:6m:35s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -1611.858
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.697
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+Iteration 610 / LogL: -1607.690 / Time: 0h:6m:43s (0h:0m:59s left)
+Iteration 620 / LogL: -1607.690 / Time: 0h:6m:48s (0h:0m:52s left)
+Iteration 630 / LogL: -1607.690 / Time: 0h:6m:53s (0h:0m:46s left)
+Iteration 640 / LogL: -1607.690 / Time: 0h:6m:59s (0h:0m:39s left)
+Iteration 650 / LogL: -1607.690 / Time: 0h:7m:4s (0h:0m:32s left)
+Log-likelihood cutoff on original alignment: -1611.858
+Iteration 660 / LogL: -1607.690 / Time: 0h:7m:10s (0h:0m:26s left)
+Iteration 670 / LogL: -1607.690 / Time: 0h:7m:17s (0h:0m:19s left)
+Iteration 680 / LogL: -1607.690 / Time: 0h:7m:21s (0h:0m:13s left)
+Iteration 690 / LogL: -1607.690 / Time: 0h:7m:26s (0h:0m:6s left)
+Iteration 700 / LogL: -1607.690 / Time: 0h:7m:32s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -1611.858
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.914
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+Iteration 710 / LogL: -1607.690 / Time: 0h:7m:39s (0h:0m:58s left)
+Iteration 720 / LogL: -1607.690 / Time: 0h:7m:46s (0h:0m:51s left)
+Iteration 730 / LogL: -1607.690 / Time: 0h:7m:53s (0h:0m:45s left)
+Iteration 740 / LogL: -1607.690 / Time: 0h:7m:58s (0h:0m:38s left)
+Iteration 750 / LogL: -1607.690 / Time: 0h:8m:4s (0h:0m:32s left)
+Log-likelihood cutoff on original alignment: -1611.858
+Iteration 760 / LogL: -1607.690 / Time: 0h:8m:11s (0h:0m:25s left)
+Iteration 770 / LogL: -1607.690 / Time: 0h:8m:19s (0h:0m:19s left)
+Iteration 780 / LogL: -1607.690 / Time: 0h:8m:26s (0h:0m:13s left)
+Iteration 790 / LogL: -1607.690 / Time: 0h:8m:34s (0h:0m:6s left)
+Iteration 800 / LogL: -1607.690 / Time: 0h:8m:40s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -1611.858
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.538
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+Iteration 810 / LogL: -1607.690 / Time: 0h:8m:49s (0h:0m:58s left)
+Iteration 820 / LogL: -1607.690 / Time: 0h:8m:58s (0h:0m:52s left)
+Iteration 830 / LogL: -1607.690 / Time: 0h:9m:6s (0h:0m:46s left)
+Iteration 840 / LogL: -1607.690 / Time: 0h:9m:13s (0h:0m:39s left)
+Iteration 850 / LogL: -1607.690 / Time: 0h:9m:22s (0h:0m:33s left)
+Log-likelihood cutoff on original alignment: -1611.858
+Iteration 860 / LogL: -1607.690 / Time: 0h:9m:29s (0h:0m:26s left)
+Iteration 870 / LogL: -1607.690 / Time: 0h:9m:36s (0h:0m:19s left)
+Iteration 880 / LogL: -1607.690 / Time: 0h:9m:42s (0h:0m:13s left)
+Iteration 890 / LogL: -1607.690 / Time: 0h:9m:51s (0h:0m:6s left)
+Iteration 900 / LogL: -1607.690 / Time: 0h:9m:58s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -1611.858
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.835
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+Iteration 910 / LogL: -1607.690 / Time: 0h:10m:7s (0h:1m:0s left)
+Iteration 920 / LogL: -1607.690 / Time: 0h:10m:14s (0h:0m:53s left)
+Iteration 930 / LogL: -1607.690 / Time: 0h:10m:20s (0h:0m:46s left)
+Iteration 940 / LogL: -1607.690 / Time: 0h:10m:26s (0h:0m:40s left)
+Iteration 950 / LogL: -1607.690 / Time: 0h:10m:31s (0h:0m:33s left)
+Log-likelihood cutoff on original alignment: -1611.858
+Iteration 960 / LogL: -1607.690 / Time: 0h:10m:38s (0h:0m:26s left)
+Iteration 970 / LogL: -1607.690 / Time: 0h:10m:44s (0h:0m:19s left)
+Iteration 980 / LogL: -1607.690 / Time: 0h:10m:50s (0h:0m:13s left)
+Iteration 990 / LogL: -1607.690 / Time: 0h:10m:55s (0h:0m:6s left)
+Iteration 1000 / LogL: -1607.690 / Time: 0h:11m:3s (0h:0m:0s left)
+Log-likelihood cutoff on original alignment: -1611.858
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.898
+NOTE: UFBoot does not converge, continue at least 100 more iterations
+TREE SEARCH COMPLETED AFTER 1001 ITERATIONS / Time: 0h:11m:5s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+Initial log-likelihood: -1607.690
+Current log-likelihood at step 1: -1607.690
+Partition-specific rates:  1.000
+Parameters optimization took 0 rounds (0.054 sec)
+
+BEST SCORE FOUND : -1607.690
+WARNING: bootstrap analysis did not converge. You should rerun with higher number of iterations (-nm option)
+Creating bootstrap support values...
+Split supports printed to NEXUS file examples/Acropora//aln_seqs/led3470.nt.aln.nex.splits.nex
+Total tree length: 0.296
+
+Total number of iterations: 1001
+CPU time used for tree search: 19.943 sec (0h:0m:19s)
+Wall-clock time used for tree search: 664.834 sec (0h:11m:4s)
+Total CPU time used: 20.032 sec (0h:0m:20s)
+Total wall-clock time used: 667.762 sec (0h:11m:7s)
+
+Computing bootstrap consensus tree...
+Reading input file examples/Acropora//aln_seqs/led3470.nt.aln.nex.splits.nex...
+5 taxa and 15 splits.
+Consensus tree written to examples/Acropora//aln_seqs/led3470.nt.aln.nex.contree
+Reading input trees file examples/Acropora//aln_seqs/led3470.nt.aln.nex.contree
+Log-likelihood of consensus tree: -1607.690
+
+Analysis results written to: 
+  IQ-TREE report:                examples/Acropora//aln_seqs/led3470.nt.aln.nex.iqtree
+  Maximum-likelihood tree:       examples/Acropora//aln_seqs/led3470.nt.aln.nex.treefile
+  Likelihood distances:          examples/Acropora//aln_seqs/led3470.nt.aln.nex.mldist
+  Best partitioning scheme:      examples/Acropora//aln_seqs/led3470.nt.aln.nex.best_scheme.nex
+           in RAxML format:      examples/Acropora//aln_seqs/led3470.nt.aln.nex.best_scheme
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          examples/Acropora//aln_seqs/led3470.nt.aln.nex.splits.nex
+  Consensus tree:                examples/Acropora//aln_seqs/led3470.nt.aln.nex.contree
+  Screen log file:               examples/Acropora//aln_seqs/led3470.nt.aln.nex.log
+
+Date and Time: Sat Jan 12 16:15:06 2019
