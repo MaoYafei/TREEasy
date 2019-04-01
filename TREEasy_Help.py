@@ -8,6 +8,7 @@ def main():
 		from Bio import SeqIO
 		from Bio.Seq import Seq
 		from Bio.Alphabet import IUPAC
+		print "ALL good for python modules"
 	except Exception:
 		print 'You have to install related python modules'
 		sys.exit()
@@ -19,6 +20,7 @@ def main():
 	try:
 		print 'check mafft/julia/java/stells-v2/mpest:'
 		subprocess.check_call(['which', 'mafft','julia','java','stells-v2','mpest'])
+		print "ALL good for executive commands"
 	except:
 		print 'You have to install mafft/julia/java/stells-v2/mpest'
 		sys.exit()
@@ -26,6 +28,7 @@ def main():
 	try:
 		print 'Translatorx/ML_build/Spetree/Phylonet/astral/AMAS.py:'
         	subprocess.check_call(['ls', 'translatorx_vLocal.pl','ML_build.py','Spetree.py','PhyloNet_3.6.8.jar','astral.5.6.3.jar','AMAS.py'])
+		print "All good for scripts"
 	except:
         	print 'You have to install TRANSLATORX/ML_build.py/Spetree.py/PhyloNet_3.6.8.jar/astral.5.6.3.jar/AMAS.py in current directory'
         	sys.exit()
