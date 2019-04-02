@@ -17,20 +17,47 @@ def main():
         	print 'You need to have authority to make/delete directory'
         	sys.exit()
 
-	try:
-		print 'check mafft/julia/java/stells-v2/mpest:'
-		subprocess.check_call(['which', 'mafft','julia','java','stells-v2','mpest'])
-		print "ALL good for executive commands"
-	except:
-		print 'You have to install mafft/julia/java/stells-v2/mpest'
-		sys.exit()
-
+        try:
+                print 'check mafft'
+                subprocess.check_call(['which', 'mafft'])
+                print "mafft pass"
+        except:
+                print 'You have to install mafft: https://mafft.cbrc.jp/alignment/software/'
+                sys.exit()
+        try:
+                print 'check julia'
+                subprocess.check_call(['which', 'julia'])
+                print "julia pass"
+        except:
+                print 'You have to install julia: https://julialang.org/downloads/'
+                sys.exit()
+        try:
+                print 'check java'
+                subprocess.check_call(['which', 'java'])
+                print "java pass"
+        except:
+                print 'You have to install java: https://www.java.com/en/download/manual.jsp'
+                sys.exit()
+        try:
+                print 'check stells-v2'
+                subprocess.check_call(['which', 'stells-v2'])
+                print "stells-v2 pass"
+        except:
+                print 'You have to install stells-v2: https://github.com/yufengwudcs/STELLS2'
+                sys.exit()
+        try:
+                print 'check mpest'
+                subprocess.check_call(['which', 'mpest'])
+                print "mpest pass"
+        except:
+                print 'You have to install mpest: http://faculty.franklin.uga.edu/lliu/mp-est'
+                sys.exit()
 	try:
 		print 'Translatorx/ML_build/Spetree/Phylonet/astral/AMAS.py:'
         	subprocess.check_call(['ls', 'translatorx_vLocal.pl','ML_build.py','Spetree.py','PhyloNet_3.6.8.jar','astral.5.6.3.jar','AMAS.py'])
 		print "All good for scripts"
 	except:
-        	print 'You have to install TRANSLATORX/ML_build.py/Spetree.py/PhyloNet_3.6.8.jar/astral.5.6.3.jar/AMAS.py in current directory'
+        	print 'You have to install TRANSLATORX or ML_build.py or Spetree.py or PhyloNet_3.6.8.jar or astral.5.6.3.jar or AMAS.py in current directory'
         	sys.exit()
 	return;
 

@@ -29,7 +29,10 @@
 -c: Data type. Data type. This parameter describes the input data type. There are two possible data types for the TREEasy. The first type is protein-coding sequences (CDS). You have to prepare two FASTA files for one gene. The first is the protein amino acid sequences in FASTA file named as XXX_aa.fasta (eg. CO1_aa.fasta), the other is corresponding nucleotide sequences in FASTA file named as XXX_nc.fasta (eg. CO1_nc.fasta). The second type is non-cds. Only one FASTA file is required as input named as XXX.fasta (eg. CO1.fasta). 
 
 Here, we presented the command line for running empirical Acropora data below:
-
+     
+     cd examples
+     tar zxvf Acropora_data.tar.gz
+     cd ..
      python TREEasy.py -d examples/Acropora -s examples/Acro_spe_name.txt -g examples/Acro_gene_name.txt -b 50 -r Aten -n 3 -k 3 -t 8 -c CDS
 
 
