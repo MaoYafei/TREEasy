@@ -25,6 +25,12 @@ def main():
                 print 'You have to install mafft: https://mafft.cbrc.jp/alignment/software/'
                 sys.exit()
         try:
+                print 'check IQ-TREE'
+                subprocess.check_call(['which', 'iqtree'])
+                print "IQ-TREE pass"
+        except:
+                print 'You have to install IQ-TREE: http://www.iqtree.org/#download'
+        try:
                 print 'check julia'
                 subprocess.check_call(['which', 'julia'])
                 print "julia pass"

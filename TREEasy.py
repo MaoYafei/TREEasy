@@ -59,11 +59,11 @@ try:
         from Bio import SeqIO
         from Bio.Seq import Seq
         from Bio.Alphabet import IUPAC
-        subprocess.check_call(['which', 'mafft','julia','java','stells-v2','mpest'])
+        subprocess.check_call(['which', 'mafft','julia','java','stells-v2','mpest','iqtree'])
         subprocess.check_call(['ls', 'translatorx_vLocal.pl','ML_build.py','Spetree.py','PhyloNet_3.6.8.jar','astral.5.6.3.jar','AMAS.py'])
         print "Passing checking"
 except Exception:
-        print """Please run 'python TREEasy_Help.py' to see which dependeces you need to install"""
+        print """Please run 'python TREEasy_Help.py' to see which dependencies you need to install"""
         sys.exit()
 
 if os.system("mkdir test_test_test_test")!=0 or os.system("rm -r test_test_test_test")!=0:
