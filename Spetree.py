@@ -56,29 +56,8 @@ def gene_namechange(namefile, tree):
     return dic_name
 
 
-if __name__ == "__main__":
-    opts, args = getopt.getopt(sys.argv[1:], "hs:g:b:r:n:k:t:d:")
-    boot_value = 50
-    Net_num = 5
-
-    for op, value in opts:
-        if op == "-b":
-            boot_value = int(value)
-        elif op == "-d":
-            pwd = value + '/'
-        elif op == "-r":
-            roottaxon = value
-        elif op == "-s":
-            species_namefile = value
-        elif op == "-g":
-            gene_namefile = value
-        elif op == "-n":
-            Net_num = int(value)
-        elif op == "-k":
-            cross_value = int(value)
-        elif op == "-t":
-            thread_number = int(value)
-
+def run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net_num, cross_value, thread_number,
+                message_queue=None):
     os.system('cat %saln_seqs/*.contree > %sall_iqtree.contree' % (pwd, pwd))
 
     infile = open(pwd + "all_iqtree.contree", 'r')
@@ -148,6 +127,8 @@ if __name__ == "__main__":
     os.system(
         'java -jar astral.5.6.3.jar -i %s -o %sASTRAL/%s -a %sASTRAL/species_name_ASTRAL.txt 2> %sASTRAL/run_ASTRAL.log' \
         % (pwd + "all_iqtree_btstraped.txt", pwd, "ASTRAL_output.txt", pwd, pwd))
+    if message_queue:
+        message_queue.put("ASTRAL done")
 
     ###MP_EST RUNNING###
 
@@ -160,6 +141,8 @@ if __name__ == "__main__":
     outfile.close()
     os.system('mpest %sMP_EST/control.file 1> %sMP_EST/run_MPEST.log' % (pwd, pwd))
     os.system('mv %sall_iqtree_rooted.txt_* %sMP_EST/' % (pwd, pwd))
+    if message_queue:
+        message_queue.put("MP_EST done")
 
     ###STELLS2 RUNNING###
 
@@ -168,6 +151,8 @@ if __name__ == "__main__":
     os.system('stells-v2 -t %d -g %sall_iqtree_namechange_nonbranch.txt > %sSTELLS2/STELLS2_output.txt' % (
     thread_number, pwd, pwd))
     os.system('mv %sall_iqtree_namechange_nonbranch.txt-nearopt.trees %sSTELLS2/' % (pwd, pwd))
+    if message_queue:
+        message_queue.put("STELLS2 done")
 
     ###SNAQ RUNNING###
 
@@ -182,6 +167,8 @@ if __name__ == "__main__":
     os.system('mv net2* %sSNAQ/' % (pwd))
     os.system('mv summaryTreesQuartets.txt %sSNAQ/' % (pwd))
     os.system('mv tableCF.txt %sSNAQ/' % (pwd))
+    if message_queue:
+        message_queue.put("SNAQ done")
 
     ###PHYLONET RUNNING###
 
@@ -200,3 +187,33 @@ if __name__ == "__main__":
     Net_num, thread_number, cross_value, taxonmap_phylonet[0][:-1]))
     outfile.close()
     os.system('java -jar PhyloNet_3.6.8.jar %sPHYLONET/phylonet_con.txt 1>%sPHYLONET/PHYLONET_output.txt' % (pwd, pwd))
+    if message_queue:
+        message_queue.put("PHYLONET done")
+        message_queue.put("ALL DONE")
+
+
+if __name__ == "__main__":
+    opts, args = getopt.getopt(sys.argv[1:], "hs:g:b:r:n:k:t:d:")
+    boot_value = 50
+    Net_num = 5
+
+    for op, value in opts:
+        if op == "-b":
+            boot_value = int(value)
+        elif op == "-d":
+            pwd = value + '/'
+        elif op == "-r":
+            roottaxon = value
+        elif op == "-s":
+            species_namefile = value
+        elif op == "-g":
+            gene_namefile = value
+        elif op == "-n":
+            Net_num = int(value)
+        elif op == "-k":
+            cross_value = int(value)
+        elif op == "-t":
+            thread_number = int(value)
+
+    run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net_num, cross_value, thread_number)
+
