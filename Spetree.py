@@ -120,6 +120,9 @@ def run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net
     os.system("iqtree -s %s -bb 1000 -redo -nt %d -m MFP 1>%s_ML_iqtree.log" % (
     pwd + "CONCAT/concatenated.out", thread_number, pwd + "CONCAT/concatenated.out"))
 
+    if message_queue:
+        message_queue.put("ASTRAL running...")
+
     ###ASTRAL RUNNING###
     os.system('rm -rf %sASTRAL' % (pwd))
     os.system('mkdir %sASTRAL' % (pwd))
@@ -131,6 +134,7 @@ def run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net
         % (pwd + "all_iqtree_btstraped.txt", pwd, "ASTRAL_output.txt", pwd, pwd))
     if message_queue:
         message_queue.put("ASTRAL done")
+        message_queue.put("MP_EST running...")
 
     ###MP_EST RUNNING###
 
@@ -145,6 +149,7 @@ def run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net
     os.system('mv %sall_iqtree_rooted.txt_* %sMP_EST/' % (pwd, pwd))
     if message_queue:
         message_queue.put("MP_EST done")
+        message_queue.put("STELLS2 running...")
 
     ###STELLS2 RUNNING###
 
@@ -155,6 +160,7 @@ def run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net
     os.system('mv %sall_iqtree_namechange_nonbranch.txt-nearopt.trees %sSTELLS2/' % (pwd, pwd))
     if message_queue:
         message_queue.put("STELLS2 done")
+        message_queue.put("SNAQ running...")
 
     ###SNAQ RUNNING###
 
@@ -171,6 +177,8 @@ def run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net
     os.system('mv tableCF.txt %sSNAQ/' % (pwd))
     if message_queue:
         message_queue.put("SNAQ done")
+        message_queue.put("PHYLONET running...")
+
 
     ###PHYLONET RUNNING###
 

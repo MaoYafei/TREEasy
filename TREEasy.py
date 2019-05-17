@@ -36,6 +36,8 @@ def dependency_check():
 def run_TREEasy(seq_file, roottaxon, type, species_namefile, gene_namefile, boot_value, Net_num,
                 cross_value, thread_number, message_queue=None):
     ####Main Running####
+    if message_queue:
+        message_queue.put('ML tree running...')
 
     if type == "CDS":
         L = glob.glob(seq_file + "/*_nc.fasta")
@@ -63,11 +65,11 @@ def run_TREEasy(seq_file, roottaxon, type, species_namefile, gene_namefile, boot
         t.join()
     print 'ML tree done'
     if message_queue:
-        print(message_queue)
         message_queue.put('ML tree done')
 
     ######Species tree inferrring#######
-    run_Spetree(seq_file + '/', species_namefile, gene_namefile, boot_value, roottaxon, Net_num, cross_value, thread_number)
+    run_Spetree(seq_file + '/', species_namefile, gene_namefile, boot_value, roottaxon, Net_num, cross_value, thread_number,
+                message_queue=message_queue)
 
 
 if __name__ == "__main__":

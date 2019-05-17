@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 import tkFileDialog
 import tkFont
 from Tkinter import *
@@ -22,6 +23,7 @@ class TREEasyThread(threading.Thread):
         print("progress start")
         try:
             run_TREEasy(**self.args)
+            print("progress finish")
         except Exception, e:
             # self.queue.put("PROCESS FAILED")
             print(e)
@@ -83,7 +85,7 @@ class ProgressWindow(Toplevel):
         # Progress Text
         self.progress_label = Label(master=self, text="Progress")
         self.progress_label.pack()
-        self.progress_field = Text(master=self, height=10)
+        self.progress_field = Text(master=self, height=20)
         self.progress_field.insert(0.0, self.warning_message)
         self.progress_field.pack()
         self.progress_field.configure(state="disabled")
