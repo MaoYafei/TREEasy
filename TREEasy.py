@@ -4,8 +4,9 @@ import time
 import os
 import glob
 from Spetree import run_Spetree
-import Queue
 
+from ML_build import *
+from TREEasy_Help import *
 
 def dependency_check():
     ####Dependence Check####
@@ -45,13 +46,13 @@ def run_TREEasy(seq_file, roottaxon, type, species_namefile, gene_namefile, boot
     ThreadList = []
     if type == "CDS":  # CDS
         for i in L:
-            Parameters = [i, i.replace("_nc.fasta", "_aa.fasta"), thread_number_iqtree]
+            Parameters = [i, i.replace("_nc.fasta", "_aa.fasta"), thread_number]
             t = threading.Thread(target=aln_cds, args=(Parameters,))
             t.setDaemon(True)
             ThreadList.append(t)
     else:  # NONCDS
         for i in L:
-            Parameters = [i, thread_number_iqtree]
+            Parameters = [i, thread_number]
             t = threading.Thread(target=aln_noncds, args=(Parameters,))
             t.setDaemon(True)
             ThreadList.append(t)
@@ -62,6 +63,7 @@ def run_TREEasy(seq_file, roottaxon, type, species_namefile, gene_namefile, boot
         t.join()
     print 'ML tree done'
     if message_queue:
+        print(message_queue)
         message_queue.put('ML tree done')
 
     ######Species tree inferrring#######
@@ -74,8 +76,6 @@ if __name__ == "__main__":
     Net_num = 5
     boot_value = 50
 
-    from ML_build import *
-    from TREEasy_Help import *
 
     for op, value in opts:
         if op == "-d":
@@ -118,7 +118,7 @@ if __name__ == "__main__":
     if not dependency_check():
         sys.exit()
 
-    run_TREEasy(seq_file, roottaxon, type, species_namefile, gene_namefile, boot_value, Net_num, cross_value, thread_number)
+    run_TREEasy(seq_file, roottaxon, type, species_namefile, gene_namefile, boot_value, Net_num, cross_value, thread_number_iqtree)
 
 
 

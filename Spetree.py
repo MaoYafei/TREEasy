@@ -35,7 +35,7 @@ def spe_namechange(namefile, tree):
     return tree
 
 
-def gene_namechange(namefile, tree):
+def gene_namechange(pwd, gene_namefile):
     os.system('rm %sall_iqtree_spename.contree' % (pwd))
     infile = open(gene_namefile, 'r')
     dic_name = {}
@@ -63,11 +63,13 @@ def run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net
     infile = open(pwd + "all_iqtree.contree", 'r')
 
     ###change gene name#####
+    global control_mpest
+    global taxonmap_phylonet
     control_mpest = ['', 0, 0]
     n_gene = 0
     taxonmap_phylonet = ['']
     dic_name = {}
-    dic_name = gene_namechange(gene_namefile, pwd + 'all_iqtree.contree')
+    dic_name = gene_namechange(pwd, gene_namefile)
     infile = open(pwd + 'all_iqtree_spename.contree', 'r')
 
     outfile_btstraped = open(pwd + 'all_iqtree_btstraped.txt', 'w')  # Input For ASTRAL, SNAQ
@@ -159,7 +161,7 @@ def run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net
     os.system('rm -rf %sSNAQ' % (pwd))
     os.system('mkdir %sSNAQ' % (pwd))
     outfile = open(pwd + 'SNAQ/snaq_con.jl', 'w')
-    outfile.write("""Pkg.add("PhyloNetworks")\n#Pkg.update()\nusing PhyloNetworks\nd=readTrees2CF("%sall_iqtree_btstraped.txt");\n 
+    outfile.write("""using Pkg\nPkg.add("PhyloNetworks")\n#Pkg.update()\nusing PhyloNetworks\nd=readTrees2CF("%sall_iqtree_btstraped.txt");\n 
     T=readTopology("%sASTRAL/ASTRAL_output.txt");\n 
     net2=snaq!(T,d,hmax=%d, filename="net2_snaq");""" % (pwd, pwd, Net_num))
     outfile.close()
