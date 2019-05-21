@@ -1,5 +1,5 @@
 # TREEasy
-  This python script can be used to infer species trees and phylogenetic networks from sequences
+  This tool can be used to infer species trees and phylogenetic networks from sequences
 
 # Run the program & Parameters
   1.  Inferring species trees and phylogenetic networks from protein-coding sequences
