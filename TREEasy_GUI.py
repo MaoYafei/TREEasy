@@ -64,7 +64,10 @@ class FileFrame(Frame):
 
 
 class ProgressWindow(Toplevel):
-    warning_message = "Warning message here! If you still want to proceed with GUI, click the START button."
+    warning_message = "Warning! We recommend you not to use GUI if it is a large dataset. Your desktop may get stuck " \
+                      "and stop responding. \n" \
+                      "You can copy the command line above to run TREEasy in a terminal. \n" \
+                      "If you still want to proceed with GUI, click the START button."
 
     def __init__(self, parent, **kwargs):
         Toplevel.__init__(self, parent)
@@ -76,11 +79,15 @@ class ProgressWindow(Toplevel):
         self.cmd_label = Label(master=self, text="Command Line")
         self.cmd_label.pack()
 
-        self.cmd_field = Text(master=self, height=2)
+        self.cmd_field = Text(master=self, height=4)
         self.cmd_field.insert(END, self.get_cmd())
         self.cmd_field.configure(state="disabled")
         self.cmd_field.pack()
         self.grab_set()
+
+        # copy button
+        self.copy_button = Button(master=self, text="Copy Command", command=self.copy)
+        self.copy_button.pack()
 
         # Progress Text
         self.progress_label = Label(master=self, text="Progress")
@@ -100,6 +107,10 @@ class ProgressWindow(Toplevel):
 
         # on close
         self.protocol("WM_DELETE_WINDOW", self.on_close)
+
+    def copy(self):
+        self.clipboard_clear()
+        self.clipboard_append(self.get_cmd())
 
     def get_cmd(self):
         cmd = "python TREEasy.py -d {} -s {} -g {} -b {} -r {} -n {} -k {} -t {} -c {}".format(
