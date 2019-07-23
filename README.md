@@ -111,7 +111,7 @@ Here, we presented the command line for running empirical Acropora data below:
  Dendroscope can be used to present species trees and networks.
   
 # Citations
-     1. XXXX
+     1. Mao, Y., Hou, S. and Economo, E.P., 2019. TREEasy: an automated workflow to infer gene trees, species trees, and phylogenetic networks from multilocus data. bioRxiv, p.706390.
      2. Abascal, Federico, Rafael Zardoya, and Maximilian J. Telford. "TranslatorX: multiple alignment of nucleotide sequences guided by amino acid translations." Nucleic acids research 38.suppl_2 (2010): W7-W13.
      3. Katoh, Kazutaka, and Daron M. Standley. "MAFFT multiple sequence alignment software version 7: improvements in performance and usability." Molecular biology and evolution 30.4 (2013): 772-780.
      4. Bastide, P., Solis-Lemus, C., Kriebel, R., William Sparks, K., and Ané, C. (2018). Phylogenetic comparative methods on phylogenetic networks with reticulations. Systematic biology 67, 800-820.
