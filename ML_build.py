@@ -1,5 +1,6 @@
 import sys, getopt
 import os
+from random import random, randint
 
 import Bio
 import linecache
@@ -79,8 +80,9 @@ def aln_noncds(Parameters):
     ####running iqtree###
     os.system('mv %s.aln %saln_seqs/' % (pwd + seq_file, pwd))
     pwd = pwd + '/aln_seqs/'
-    os.system("iqtree -s %s -bb 1000 -redo -nt %d -m MFP 1>%s_ML_iqtree.log" % (
-    pwd + seq_file + '.aln', thread_number_iqtree, pwd + seq_file))
+    random_seed_number = randint(0, 2**32)
+    os.system("iqtree -s %s -bb 1000 -redo -nt %d -m MFP -seed %d 1>%s_ML_iqtree.log" % (
+    pwd + seq_file + '.aln', thread_number_iqtree, pwd + seq_file,random_seed_number))
 
 
 ###Main Process###

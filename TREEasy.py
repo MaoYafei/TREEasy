@@ -18,7 +18,7 @@ def dependency_check():
         from Bio.Seq import Seq
         from Bio.Alphabet import IUPAC
 
-        subprocess.check_call(['which', 'mafft', 'julia', 'java', 'stells-v2', 'mpest', 'iqtree'])
+        subprocess.check_call(['which', 'mafft', 'julia', 'java', 'stells-v2', 'mpest', 'iqtree', 'raxml-ng'])
         subprocess.check_call(
             ['ls', 'translatorx_vLocal.pl', 'ML_build.py', 'Spetree.py', 'PhyloNet_3.6.8.jar', 'astral.5.6.3.jar',
              'AMAS.py'])

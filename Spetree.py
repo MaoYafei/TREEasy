@@ -1,8 +1,10 @@
 import os
+from Bio import Phylo
 from ete3 import Tree
-from random import random
+from random import random, randint
 import sys, getopt
 import glob
+import numpy as np
 
 
 def bootstrap_check(tree, value):
@@ -109,6 +111,7 @@ def run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net
     ######inputs for species tree inferring######
 
     ####Concat RUNNING####
+    random_seed_number = randint(0, 2**32)
     for key in dic_name:
         os.system(
             """ sed -i "s/%s/%s/g" `grep "%s" -rl %saln_seqs/*.aln` """ % (">" + key, ">" + dic_name[key], ">" + key, pwd))
@@ -117,8 +120,14 @@ def run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net
     os.system("mkdir %sCONCAT" % (pwd))
     os.system("python AMAS.py concat -i %saln_seqs/*.aln -f fasta -d dna" % (pwd))
     os.system("mv concatenated.out %sCONCAT/" % (pwd))
-    os.system("iqtree -s %s -bb 1000 -redo -nt %d -m MFP 1>%s_ML_iqtree.log" % (
-    pwd + "CONCAT/concatenated.out", thread_number, pwd + "CONCAT/concatenated.out"))
+    os.system("iqtree -s %s -bb 1000 -redo -nt %d -m MFP -seed %d 1>%s_ML_iqtree.log" % (
+    pwd + "CONCAT/concatenated.out", thread_number, random_seed_number, pwd + "CONCAT/concatenated.out"))
+
+    if message_queue:
+        message_queue.put("Raxml running...")
+
+    ####Raxml RUNNING####
+    os.system("raxml-ng --all --msa %s  --model GTR+G+FO --tree pars{10} --bs-trees autoMRE{1000} --seed %d --threads %d --prefix %s_raxml_ng --bs-cutoff 0.01" %(pwd+"CONCAT/concatenated.out", random_seed_number,thread_number,pwd + "CONCAT/concatenated.out"))
 
     if message_queue:
         message_queue.put("ASTRAL running...")
@@ -147,6 +156,9 @@ def run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net
     outfile.close()
     os.system('mpest %sMP_EST/control.file 1> %sMP_EST/run_MPEST.log' % (pwd, pwd))
     os.system('mv %sall_iqtree_rooted.txt_* %sMP_EST/' % (pwd, pwd))
+
+    Phylo.convert(pwd+'MP_EST/all_iqtree_rooted.txt_besttree.tre', 'nexus', pwd+'MP_EST/all_iqtree_rooted.txt_besttree.tmp.nex', 'newick')
+    os.system('head -n1 %sMP_EST/all_iqtree_rooted.txt_besttree.tmp.nex >%sMP_EST/all_iqtree_rooted.txt_besttree.nex' % (pwd, pwd)) 
     if message_queue:
         message_queue.put("MP_EST done")
         message_queue.put("STELLS2 running...")
@@ -158,9 +170,21 @@ def run_Spetree(pwd, species_namefile, gene_namefile, boot_value, roottaxon, Net
     os.system('stells-v2 -t %d -g %sall_iqtree_namechange_nonbranch.txt > %sSTELLS2/STELLS2_output.txt' % (
     thread_number, pwd, pwd))
     os.system('mv %sall_iqtree_namechange_nonbranch.txt-nearopt.trees %sSTELLS2/' % (pwd, pwd))
+    os.system('grep "the inferred MLE species tree" %sSTELLS2/STELLS2_output.txt | cut -f 2- -d ":" | sed "s/$/;/" > %sSTELLS2/STELLS2_output_tree.txt' %(pwd, pwd))
+
     if message_queue:
         message_queue.put("STELLS2 done")
         message_queue.put("SNAQ running...")
+
+    ###TREE COMPARE###
+    tree_files = [pwd+'CONCAT/concatenated.out.contree', pwd+'CONCAT/concatenated.out_raxml_ng.raxml.bestTree', pwd+'ASTRAL/ASTRAL_output.txt',pwd+'MP_EST/all_iqtree_rooted.txt_besttree.nex', pwd+'STELLS2/STELLS2_output_tree.txt']
+    trees = map(Tree, tree_files)
+    n_trees = len(tree_files)
+    mat = np.zeros((n_trees, n_trees), dtype=np.float)
+    for i in range(n_trees):
+        for j in range(n_trees):
+            mat[i][j] = (trees[i].robinson_foulds(trees[j], unrooted_trees=True))[0]
+    np.savetxt(pwd+'tree_compare.csv', mat, delimiter=",", fmt='%.3e')
 
     ###SNAQ RUNNING###
 
