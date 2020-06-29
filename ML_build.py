@@ -82,7 +82,7 @@ def aln_noncds(Parameters):
     pwd = pwd + '/aln_seqs/'
     random_seed_number = randint(0, 2**32)
     os.system("iqtree -s %s -bb 1000 -redo -nt %d -m MFP -seed %d 1>%s_ML_iqtree.log" % (
-    pwd + seq_file + '.aln', thread_number_iqtree, pwd + seq_file,random_seed_number))
+    pwd + seq_file + '.aln', thread_number_iqtree, random_seed_number, pwd + seq_file))
 
 
 ###Main Process###
